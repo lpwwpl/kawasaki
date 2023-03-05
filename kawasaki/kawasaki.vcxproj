@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E296FC14-B7C9-4982-8B22-79C4BE4387C1}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>core;gui;help;printsupport;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>msvc2017_64</QtInstall>
+    <QtModules>
+    </QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)kawasaki\BisonFlex;$(SolutionDir)kawasaki\qaivlib\include;$(SolutionDir)kawasaki\gui\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(SolutionDir)x64\Debug\QScintilla2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="grammar\accessnode.h" />
+    <ClInclude Include="grammar\accuracy.h" />
+    <ClInclude Include="grammar\activationrecord.h" />
+    <ClInclude Include="grammar\align.h" />
+    <ClInclude Include="grammar\assignmentnode.h" />
+    <ClInclude Include="grammar\ast.h" />
+    <ClInclude Include="grammar\astnode.h" />
+    <ClInclude Include="grammar\base.h" />
+    <ClInclude Include="grammar\bits.h" />
+    <ClInclude Include="grammar\break.h" />
+    <ClInclude Include="grammar\buildin.h" />
+    <ClInclude Include="grammar\c1move.h" />
+    <ClInclude Include="grammar\casenode.h" />
+    <ClInclude Include="grammar\decode.h" />
+    <ClInclude Include="grammar\decompose.h" />
+    <ClInclude Include="grammar\dimnumnode.h" />
+    <ClInclude Include="grammar\distance.h" />
+    <ClInclude Include="grammar\do_until.h" />
+    <ClInclude Include="grammar\draw.h" />
+    <ClInclude Include="grammar\drive.h" />
+    <ClInclude Include="grammar\errors.h" />
+    <ClInclude Include="grammar\FlexLexer.h" />
+    <ClInclude Include="grammar\fornode.h" />
+    <ClInclude Include="grammar\functioncallnode.h" />
+    <ClInclude Include="grammar\functionnode.h" />
+    <ClInclude Include="grammar\goto.h" />
+    <ClInclude Include="grammar\here.h" />
+    <ClInclude Include="grammar\homenode.h" />
+    <ClInclude Include="grammar\IAction.h" />
+    <ClInclude Include="grammar\identifiernode.h" />
+    <ClInclude Include="grammar\ifnode.h" />
+    <ClInclude Include="grammar\jappro.h" />
+    <ClInclude Include="grammar\jmove.h" />
+    <ClInclude Include="grammar\labelnode.h" />
+    <ClInclude Include="grammar\lappro.h" />
+    <ClInclude Include="grammar\ldepart.h" />
+    <ClInclude Include="grammar\listnode.h" />
+    <ClInclude Include="grammar\lmove.h" />
+    <ClInclude Include="grammar\nullnode.h" />
+    <ClInclude Include="grammar\numberliteralnode.h" />
+    <ClInclude Include="grammar\operatornode.h" />
+    <ClInclude Include="grammar\parameternode.h" />
+    <ClInclude Include="grammar\paramnode.h" />
+    <ClInclude Include="grammar\pause.h" />
+    <ClInclude Include="grammar\point.h" />
+    <ClInclude Include="grammar\pointoat.h" />
+    <ClInclude Include="grammar\pointx.h" />
+    <ClInclude Include="grammar\pointz.h" />
+    <ClInclude Include="grammar\printnode.h" />
+    <ClInclude Include="grammar\pulse.h" />
+    <ClInclude Include="grammar\returnnode.h" />
+    <ClInclude Include="grammar\sig.h" />
+    <ClInclude Include="grammar\signal.h" />
+    <ClInclude Include="grammar\signal_nums_node.h" />
+    <ClInclude Include="grammar\speed.h" />
+    <ClInclude Include="grammar\statementlistnode.h" />
+    <ClInclude Include="grammar\stopnode.h" />
+    <ClInclude Include="grammar\stringliteralnode.h" />
+    <ClInclude Include="grammar\swait.h" />
+    <ClInclude Include="grammar\switch.h" />
+    <ClInclude Include="grammar\switch_case_list.h" />
+    <ClInclude Include="grammar\symboltable.h" />
+    <ClInclude Include="grammar\tcpclose.h" />
+    <ClInclude Include="grammar\tcpconnect.h" />
+    <ClInclude Include="grammar\tcprecv.h" />
+    <ClInclude Include="grammar\tcpsend.h" />
+    <ClInclude Include="grammar\tcpstatus.h" />
+    <ClInclude Include="grammar\tdraw.h" />
+    <ClInclude Include="grammar\tool.h" />
+    <ClInclude Include="grammar\trans.h" />
+    <ClInclude Include="grammar\translator.hpp" />
+    <ClInclude Include="grammar\trans_str.h" />
+    <ClInclude Include="grammar\twait.h" />
+    <ClInclude Include="grammar\type.h" />
+    <ClInclude Include="grammar\val.h" />
+    <ClInclude Include="grammar\variablerecord.h" />
+    <ClInclude Include="grammar\weight.h" />
+    <ClInclude Include="grammar\whilenode.h" />
+    <ClInclude Include="grammar\parser.tab.hpp" />
+    <ClInclude Include="grammar\stack.hh" />
+    <QtMoc Include="gui\AsWorker.h" />
+    <ClInclude Include="gui\Exceptions.h" />
+    <ClInclude Include="gui\FileLua.h" />
+    <QtMoc Include="gui\FrmFindReplace.h" />
+    <ClInclude Include="gui\FwdDecl.h" />
+    <ClInclude Include="gui\IConsole.h" />
+    <ClInclude Include="gui\IFile.h" />
+    <ClInclude Include="gui\IFileObserver.h" />
+    <ClInclude Include="gui\ILockable.h" />
+    <ClInclude Include="gui\IMainFrame.h" />
+    <ClInclude Include="gui\IObserveable.h" />
+    <ClInclude Include="gui\IProject.h" />
+    <ClInclude Include="gui\IScriptEngine.h" />
+    <ClInclude Include="gui\ISettingsProvider.h" />
+    <ClInclude Include="gui\ISyncContext.h" />
+    <ClInclude Include="gui\LanguageTokens.h" />
+    <ClInclude Include="gui\Locker.h" />
+    <ClInclude Include="gui\minimap.h" />
+    <ClInclude Include="gui\ProjectLua.h" />
+    <ClInclude Include="gui\Prototypes.h" />
+    <ClInclude Include="gui\QConsoleStreamBuffer.h" />
+    <ClInclude Include="gui\QFileExplorerTabBar.h" />
+    <ClInclude Include="gui\QGraphicsItemPointList.h" />
+    <QtMoc Include="gui\searchandreplace.h" />
+    <ClInclude Include="gui\Settings.h" />
+    <ClInclude Include="gui\settings_.h" />
+    <ClInclude Include="gui\TryCatch.h" />
+    <ClInclude Include="gui\Types.h" />
+    <ClInclude Include="gui\Utils.h" />
+    <QtMoc Include="gui\WndMain.h" />
+    <QtMoc Include="gui\QSelection.h" />
+    <QtMoc Include="gui\QGradientPanel.h" />
+    <QtMoc Include="gui\QCommandPrompt.h" />
+    <QtMoc Include="gui\FrmSourceEdit.h" />
+    <QtMoc Include="gui\FrmProjectExplorer.h" />
+    <QtMoc Include="gui\FrmInfo.h" />
+    <QtMoc Include="gui\FrmFileExplorer.h" />
+    <QtMoc Include="gui\FrmConsole.h" />
+    <QtMoc Include="gui\FileExplorerTabWidget.h" />
+    <QtMoc Include="gui\DlgSettings.h" />
+    <QtMoc Include="gui\DlgNewFile.h" />
+    <QtMoc Include="gui\DlgAbout.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="grammar\accessnode.cpp" />
+    <ClCompile Include="grammar\accuracy.cpp" />
+    <ClCompile Include="grammar\activationrecord.cpp" />
+    <ClCompile Include="grammar\align.cpp" />
+    <ClCompile Include="grammar\assignmentnode.cpp" />
+    <ClCompile Include="grammar\astnode.cpp" />
+    <ClCompile Include="grammar\base.cpp" />
+    <ClCompile Include="grammar\bits.cpp" />
+    <ClCompile Include="grammar\break.cpp" />
+    <ClCompile Include="grammar\buildin.cpp" />
+    <ClCompile Include="grammar\c1move.cpp" />
+    <ClCompile Include="grammar\casenode.cpp" />
+    <ClCompile Include="grammar\decode.cpp" />
+    <ClCompile Include="grammar\decompose.cpp" />
+    <ClCompile Include="grammar\dimnumnode.cpp" />
+    <ClCompile Include="grammar\distance.cpp" />
+    <ClCompile Include="grammar\do_until.cpp" />
+    <ClCompile Include="grammar\draw.cpp" />
+    <ClCompile Include="grammar\drive.cpp" />
+    <ClCompile Include="grammar\fornode.cpp" />
+    <ClCompile Include="grammar\functioncallnode.cpp" />
+    <ClCompile Include="grammar\functionnode.cpp" />
+    <ClCompile Include="grammar\goto.cpp" />
+    <ClCompile Include="grammar\here.cpp" />
+    <ClCompile Include="grammar\homenode.cpp" />
+    <ClCompile Include="grammar\IAction.cpp" />
+    <ClCompile Include="grammar\identifiernode.cpp" />
+    <ClCompile Include="grammar\ifnode.cpp" />
+    <ClCompile Include="grammar\jappro.cpp" />
+    <ClCompile Include="grammar\jmove.cpp" />
+    <ClCompile Include="grammar\labelnode.cpp" />
+    <ClCompile Include="grammar\lappro.cpp" />
+    <ClCompile Include="grammar\ldepart.cpp" />
+    <ClCompile Include="grammar\lexer.cpp" />
+    <ClCompile Include="grammar\lmove.cpp" />
+    <ClCompile Include="grammar\nullnode.cpp" />
+    <ClCompile Include="grammar\numberliteralnode.cpp" />
+    <ClCompile Include="grammar\operatornode.cpp" />
+    <ClCompile Include="grammar\parameternode.cpp" />
+    <ClCompile Include="grammar\paramnode.cpp" />
+    <ClCompile Include="grammar\parser.tab.cpp" />
+    <ClCompile Include="grammar\pause.cpp" />
+    <ClCompile Include="grammar\point.cpp" />
+    <ClCompile Include="grammar\pointoat.cpp" />
+    <ClCompile Include="grammar\pointx.cpp" />
+    <ClCompile Include="grammar\pointz.cpp" />
+    <ClCompile Include="grammar\printnode.cpp" />
+    <ClCompile Include="grammar\pulse.cpp" />
+    <ClCompile Include="grammar\returnnode.cpp" />
+    <ClCompile Include="grammar\sig.cpp" />
+    <ClCompile Include="grammar\signal.cpp" />
+    <ClCompile Include="grammar\signal_nums_node.cpp" />
+    <ClCompile Include="grammar\speed.cpp" />
+    <ClCompile Include="grammar\statementlistnode.cpp" />
+    <ClCompile Include="grammar\stopnode.cpp" />
+    <ClCompile Include="grammar\stringliteralnode.cpp" />
+    <ClCompile Include="grammar\swait.cpp" />
+    <ClCompile Include="grammar\switch.cpp" />
+    <ClCompile Include="grammar\switch_case_list.cpp" />
+    <ClCompile Include="grammar\symboltable.cpp" />
+    <ClCompile Include="grammar\tcpclose.cpp" />
+    <ClCompile Include="grammar\tcpconnect.cpp" />
+    <ClCompile Include="grammar\tcprecv.cpp" />
+    <ClCompile Include="grammar\tcpsend.cpp" />
+    <ClCompile Include="grammar\tcpstatus.cpp" />
+    <ClCompile Include="grammar\tdraw.cpp" />
+    <ClCompile Include="grammar\tool.cpp" />
+    <ClCompile Include="grammar\trans.cpp" />
+    <ClCompile Include="grammar\translator.cpp" />
+    <ClCompile Include="grammar\trans_str.cpp" />
+    <ClCompile Include="grammar\twait.cpp" />
+    <ClCompile Include="grammar\type.cpp" />
+    <ClCompile Include="grammar\val.cpp" />
+    <ClCompile Include="grammar\weight.cpp" />
+    <ClCompile Include="grammar\whilenode.cpp" />
+    <ClCompile Include="gui\AsWorker.cpp" />
+    <ClCompile Include="gui\DlgAbout.cpp" />
+    <ClCompile Include="gui\DlgNewFile.cpp" />
+    <ClCompile Include="gui\DlgSettings.cpp" />
+    <ClCompile Include="gui\Exceptions.cpp" />
+    <ClCompile Include="gui\FileExplorerTabWidget.cpp" />
+    <ClCompile Include="gui\FileLua.cpp" />
+    <ClCompile Include="gui\FrmConsole.cpp" />
+    <ClCompile Include="gui\FrmFileExplorer.cpp" />
+    <ClCompile Include="gui\FrmFindReplace.cpp" />
+    <ClCompile Include="gui\FrmInfo.cpp" />
+    <ClCompile Include="gui\FrmProjectExplorer.cpp" />
+    <ClCompile Include="gui\FrmSourceEdit.cpp" />
+    <ClCompile Include="gui\IFile.cpp" />
+    <ClCompile Include="gui\IFileObserver.cpp" />
+    <ClCompile Include="gui\IProject.cpp" />
+    <ClCompile Include="gui\ISettingsProvider.cpp" />
+    <ClCompile Include="gui\Locker.cpp" />
+    <ClCompile Include="gui\minimap.cpp" />
+    <ClCompile Include="gui\ProjectLua.cpp" />
+    <ClCompile Include="gui\Prototypes.cpp" />
+    <ClCompile Include="gui\QCommandPrompt.cpp" />
+    <ClCompile Include="gui\QConsoleStreamBuffer.cpp" />
+    <ClCompile Include="gui\QFileExplorerTabBar.cpp" />
+    <ClCompile Include="gui\QGradientPanel.cpp" />
+    <ClCompile Include="gui\QGraphicsItemPointList.cpp" />
+    <ClCompile Include="gui\QSelection.cpp" />
+    <ClCompile Include="gui\searchandreplace.cpp" />
+    <ClCompile Include="gui\Settings.cpp" />
+    <ClCompile Include="gui\settings_.cpp" />
+    <ClCompile Include="gui\Utils.cpp" />
+    <ClCompile Include="gui\WndMain.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="grammar\lexer.l">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\win_flex --wincompat -o $(SolutionDir)\kawasaki\grammar\%(Filename).cpp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cpp %(Filename).hpp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">parser.y</AdditionalInputs>
+    </CustomBuild>
+    <None Include="..\..\..\..\..\..\c8x102.pg" />
+    <None Include="grammar\parser.output" />
+    <CustomBuild Include="grammar\parser.y">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\win_bison -o $(SolutionDir)\kawasaki\grammar\%(Filename).tab.cpp %(Identity)</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).tab.cpp ; %(Filename).tab.h</Outputs>
+    </CustomBuild>
+    <None Include="gui\InstantLuaX.tdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\code.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="gui\DlgAbout.ui" />
+    <QtUic Include="gui\DlgNewFile.ui" />
+    <QtUic Include="gui\DlgSettings.ui" />
+    <QtUic Include="gui\form.ui" />
+    <QtUic Include="gui\FrmConsole.ui" />
+    <QtUic Include="gui\FrmFileExplorer.ui" />
+    <QtUic Include="gui\FrmFindReplace.ui" />
+    <QtUic Include="gui\FrmInfo.ui" />
+    <QtUic Include="gui\FrmProjectExplorer.ui" />
+    <QtUic Include="gui\minimap.ui" />
+    <QtUic Include="gui\QGradientPanel.ui" />
+    <QtUic Include="gui\QSelection.ui" />
+    <QtUic Include="gui\searchandreplace.ui" />
+    <QtUic Include="gui\WndMain.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui\InstantLua_resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="qrc\luanda.qrc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

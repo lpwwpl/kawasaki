@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FrmFindReplace</class>
+ <widget class="QWidget" name="FrmFindReplace">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>780</width>
+    <height>314</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>780</width>
+    <height>270</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>780</width>
+    <height>314</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="windowOpacity">
+   <double>0.000000000000000</double>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>780</width>
+       <height>270</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>780</width>
+       <height>270</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Search and Replace</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item row="2" column="1" colspan="2">
+       <layout class="QFormLayout" name="formLayout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <property name="horizontalSpacing">
+         <number>0</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="checkBox_CaseSensitive">
+          <property name="text">
+           <string>Case sensitive search</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="checkBox_WholeWords">
+          <property name="text">
+           <string>Whole words</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="4">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btn_next">
+          <property name="maximumSize">
+           <size>
+            <width>64</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>goto next occourance</string>
+          </property>
+          <property name="text">
+           <string>Nxt</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="btn_previous">
+          <property name="minimumSize">
+           <size>
+            <width>64</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>64</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>goto previous occourance</string>
+          </property>
+          <property name="text">
+           <string>Pre</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_replace">
+        <property name="text">
+         <string>Repla&amp;ce:</string>
+        </property>
+        <property name="buddy">
+         <cstring>lineEdit_replace</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="3">
+       <widget class="QLineEdit" name="lineEdit_replace">
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <property name="clearButtonEnabled" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_find">
+        <property name="text">
+         <string>Find:</string>
+        </property>
+        <property name="buddy">
+         <cstring>lineEdit_find</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="btn_replace_all">
+          <property name="maximumSize">
+           <size>
+            <width>64</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Replace ALL occurances</string>
+          </property>
+          <property name="text">
+           <string>All</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QPushButton" name="btn_replace">
+          <property name="maximumSize">
+           <size>
+            <width>64</width>
+            <height>36</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Replace current occurance</string>
+          </property>
+          <property name="text">
+           <string>Rep</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QRadioButton" name="radioButton_Forward">
+          <property name="text">
+           <string>Forwards</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QRadioButton" name="radioButton_Backward">
+          <property name="text">
+           <string>Backwards</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QLineEdit" name="lineEdit_find">
+        <property name="clearButtonEnabled" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="C:/Users/86135/Desktop/searchTest-master/application.qrc"/>
+ </resources>
+ <connections/>
+</ui>

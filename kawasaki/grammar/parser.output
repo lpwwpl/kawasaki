@@ -1,0 +1,2435 @@
+Nonterminals useless in grammar
+
+   expression_trans_list
+
+
+Terminals unused in grammar
+
+   ADD
+   SUB
+   MUL
+   DIV
+   LT
+   GT
+   NumberType
+   TextType
+   VoidType
+   ArrayType
+   AND
+   OR
+   SWITCH
+   CASE
+   DEFAULT
+   OF
+
+
+Rules useless in parser due to conflicts
+
+   11 DEFINES_head: %empty
+
+   13 body: %empty
+
+
+State 0 conflicts: 3 shift/reduce, 4 reduce/reduce
+State 6 conflicts: 3 shift/reduce, 4 reduce/reduce
+State 8 conflicts: 2 shift/reduce, 3 reduce/reduce
+State 19 conflicts: 2 shift/reduce, 3 reduce/reduce
+State 77 conflicts: 17 shift/reduce
+State 123 conflicts: 20 reduce/reduce
+
+
+Grammar
+
+    0 $accept: program "end of file"
+
+    1 program: body DEFINES_list
+    2        | DEFINES_list body
+
+    3 assignment_list: assignment
+    4                | assignment_list assignment
+
+    5 TRANS_STR_stm: %empty
+    6              | TRANS_STR
+
+    7 DEFINES_list: DEFINES_head
+    8             | TRANS_STR_stm
+    9             | DEFINES_list TRANS_STR_stm
+   10             | DEFINES_list DEFINES_head
+
+   11 DEFINES_head: %empty
+   12             | DEFINES assignment_list END_DOT
+
+   13 body: %empty
+   14     | function_declaration_list
+
+   15 function_declaration_list: function_declaration
+   16                          | function_declaration_list function_declaration
+
+   17 function_declaration: FUNC Identifier '(' parameter_declaration_list ')' function_body END_DOT
+
+   18 parameter_declaration_list: parameter_declaration
+   19                           | parameter_declaration_list ',' parameter_declaration
+   20                           | %empty
+
+   21 parameter_declaration: Identifier
+   22                      | Identifier '=' expression
+
+   23 function_body: statement_list
+
+   24 statement_list: statement
+   25               | statement_list statement
+
+   26 statement: parameter_declaration
+   27          | assignment
+   28          | print
+   29          | function_call
+   30          | while_loop
+   31          | if
+   32          | return
+   33          | STOP
+   34          | BASE expression
+   35          | TOOL expression
+   36          | TWAIT expression
+   37          | JMOVE expression
+   38          | HOME expression
+   39          | SIGNAL signal_num_stm
+   40          | SIG expression
+   41          | SWAIT signal_num_stm
+   42          | TYPE expression
+   43          | GOTO expression
+
+   44 signal_num_stm: expression
+   45               | signal_num_stm ',' expression
+
+   46 return: RETURN
+
+   47 while_loop: While '(' expression ')' function_body
+
+   48 function_call: CALL Identifier '(' expression_list ')'
+   49              | CALL Identifier
+
+   50 if: IF expression function_body END_ST
+   51   | IF expression function_body ELSE function_body END_ST
+
+   52 print: PRINT expression
+
+   53 assignment: Identifier '=' expression
+   54           | Identifier '[' dim_num_stm ']' '=' expression
+
+   55 dim_num_stm: expression
+   56            | dim_num_stm ',' expression
+
+   57 expression_list: expression
+   58                | expression_list ',' expression
+   59                | %empty
+
+   60 expression: Identifier
+   61           | String
+   62           | FNULL
+   63           | Number
+   64           | function_call
+   65           | '-' expression
+   66           | expression '+' expression
+   67           | expression '-' expression
+   68           | expression '*' expression
+   69           | expression '/' expression
+   70           | expression '<' expression
+   71           | expression '>' expression
+   72           | expression GE expression
+   73           | expression LE expression
+   74           | expression NE expression
+   75           | expression EQ expression
+   76           | '(' expression ')'
+
+
+Terminals, with rules where they appear
+
+"end of file" (0) 0
+'(' (40) 17 47 48 76
+')' (41) 17 47 48 76
+'*' (42) 68
+'+' (43) 66
+',' (44) 19 45 56 58
+'-' (45) 65 67
+'/' (47) 69
+'<' (60) 70
+'=' (61) 22 53 54
+'>' (62) 71
+'[' (91) 54
+']' (93) 54
+error (256)
+GE (258) 72
+LE (259) 73
+EQ (260) 75
+NE (261) 74
+UMINUS (262)
+IFX (263)
+ELSE (264) 51
+IF (265) 50 51
+While (266) 47
+ADD (267)
+SUB (268)
+MUL (269)
+DIV (270)
+PRINT (271) 52
+LT (272)
+GT (273)
+RETURN (274) 46
+NumberType (275)
+TextType (276)
+VoidType (277)
+ArrayType (278)
+STOP (279) 33
+HOME (280) 38
+BASE (281) 34
+TOOL (282) 35
+TYPE (283) 42
+TWAIT (284) 36
+SIGNAL (285) 39
+GOTO (286) 43
+FUNC (287) 17
+SIG (288) 40
+JMOVE (289) 37
+SWAIT (290) 41
+END_ST (291) 50 51
+END_DOT (292) 12 17
+AND (293)
+OR (294)
+SWITCH (295)
+CALL (296) 48 49
+CASE (297)
+DEFAULT (298)
+FNULL (299) 62
+OF (300)
+DEFINES (301) 12
+TRANS_STR (302) 6
+Number (303) 63
+Identifier (304) 17 21 22 48 49 53 54 60
+String (305) 61
+
+
+Nonterminals, with rules where they appear
+
+$accept (63)
+    on left: 0
+program (64)
+    on left: 1 2, on right: 0
+assignment_list (65)
+    on left: 3 4, on right: 4 12
+TRANS_STR_stm (66)
+    on left: 5 6, on right: 8 9
+DEFINES_list (67)
+    on left: 7 8 9 10, on right: 1 2 9 10
+DEFINES_head (68)
+    on left: 11 12, on right: 7 10
+body (69)
+    on left: 13 14, on right: 1 2
+function_declaration_list (70)
+    on left: 15 16, on right: 14 16
+function_declaration (71)
+    on left: 17, on right: 15 16
+parameter_declaration_list (72)
+    on left: 18 19 20, on right: 17 19
+parameter_declaration (73)
+    on left: 21 22, on right: 18 19 26
+function_body (74)
+    on left: 23, on right: 17 47 50 51
+statement_list (75)
+    on left: 24 25, on right: 23 25
+statement (76)
+    on left: 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43,
+    on right: 24 25
+signal_num_stm (77)
+    on left: 44 45, on right: 39 41 45
+return (78)
+    on left: 46, on right: 32
+while_loop (79)
+    on left: 47, on right: 30
+function_call (80)
+    on left: 48 49, on right: 29 64
+if (81)
+    on left: 50 51, on right: 31
+print (82)
+    on left: 52, on right: 28
+assignment (83)
+    on left: 53 54, on right: 3 4 27
+dim_num_stm (84)
+    on left: 55 56, on right: 54 56
+expression_list (85)
+    on left: 57 58 59, on right: 48 58
+expression (86)
+    on left: 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76, on right:
+    22 34 35 36 37 38 40 42 43 44 45 47 50 51 52 53 54 55 56 57 58
+    65 66 67 68 69 70 71 72 73 74 75 76
+
+
+State 0
+
+    0 $accept: . program "end of file"
+
+    FUNC       shift, and go to state 1
+    DEFINES    shift, and go to state 2
+    TRANS_STR  shift, and go to state 3
+
+    "end of file"  reduce using rule 5 (TRANS_STR_stm)
+    "end of file"  [reduce using rule 11 (DEFINES_head)]
+    "end of file"  [reduce using rule 13 (body)]
+    FUNC           [reduce using rule 5 (TRANS_STR_stm)]
+    FUNC           [reduce using rule 11 (DEFINES_head)]
+    DEFINES        [reduce using rule 5 (TRANS_STR_stm)]
+    DEFINES        [reduce using rule 11 (DEFINES_head)]
+    DEFINES        [reduce using rule 13 (body)]
+    TRANS_STR      [reduce using rule 5 (TRANS_STR_stm)]
+    TRANS_STR      [reduce using rule 11 (DEFINES_head)]
+    TRANS_STR      [reduce using rule 13 (body)]
+    $default       reduce using rule 5 (TRANS_STR_stm)
+
+    program                    go to state 4
+    TRANS_STR_stm              go to state 5
+    DEFINES_list               go to state 6
+    DEFINES_head               go to state 7
+    body                       go to state 8
+    function_declaration_list  go to state 9
+    function_declaration       go to state 10
+
+
+State 1
+
+   17 function_declaration: FUNC . Identifier '(' parameter_declaration_list ')' function_body END_DOT
+
+    Identifier  shift, and go to state 11
+
+
+State 2
+
+   12 DEFINES_head: DEFINES . assignment_list END_DOT
+
+    Identifier  shift, and go to state 12
+
+    assignment_list  go to state 13
+    assignment       go to state 14
+
+
+State 3
+
+    6 TRANS_STR_stm: TRANS_STR .
+
+    $default  reduce using rule 6 (TRANS_STR_stm)
+
+
+State 4
+
+    0 $accept: program . "end of file"
+
+    "end of file"  shift, and go to state 15
+
+
+State 5
+
+    8 DEFINES_list: TRANS_STR_stm .
+
+    $default  reduce using rule 8 (DEFINES_list)
+
+
+State 6
+
+    2 program: DEFINES_list . body
+    9 DEFINES_list: DEFINES_list . TRANS_STR_stm
+   10             | DEFINES_list . DEFINES_head
+
+    FUNC       shift, and go to state 1
+    DEFINES    shift, and go to state 2
+    TRANS_STR  shift, and go to state 3
+
+    "end of file"  reduce using rule 5 (TRANS_STR_stm)
+    "end of file"  [reduce using rule 11 (DEFINES_head)]
+    "end of file"  [reduce using rule 13 (body)]
+    FUNC           [reduce using rule 5 (TRANS_STR_stm)]
+    FUNC           [reduce using rule 11 (DEFINES_head)]
+    DEFINES        [reduce using rule 5 (TRANS_STR_stm)]
+    DEFINES        [reduce using rule 11 (DEFINES_head)]
+    TRANS_STR      [reduce using rule 5 (TRANS_STR_stm)]
+    TRANS_STR      [reduce using rule 11 (DEFINES_head)]
+    $default       reduce using rule 5 (TRANS_STR_stm)
+
+    TRANS_STR_stm              go to state 16
+    DEFINES_head               go to state 17
+    body                       go to state 18
+    function_declaration_list  go to state 9
+    function_declaration       go to state 10
+
+
+State 7
+
+    7 DEFINES_list: DEFINES_head .
+
+    $default  reduce using rule 7 (DEFINES_list)
+
+
+State 8
+
+    1 program: body . DEFINES_list
+
+    DEFINES    shift, and go to state 2
+    TRANS_STR  shift, and go to state 3
+
+    "end of file"  reduce using rule 5 (TRANS_STR_stm)
+    "end of file"  [reduce using rule 11 (DEFINES_head)]
+    DEFINES        [reduce using rule 5 (TRANS_STR_stm)]
+    DEFINES        [reduce using rule 11 (DEFINES_head)]
+    TRANS_STR      [reduce using rule 5 (TRANS_STR_stm)]
+    TRANS_STR      [reduce using rule 11 (DEFINES_head)]
+    $default       reduce using rule 5 (TRANS_STR_stm)
+
+    TRANS_STR_stm  go to state 5
+    DEFINES_list   go to state 19
+    DEFINES_head   go to state 7
+
+
+State 9
+
+   14 body: function_declaration_list .
+   16 function_declaration_list: function_declaration_list . function_declaration
+
+    FUNC  shift, and go to state 1
+
+    $default  reduce using rule 14 (body)
+
+    function_declaration  go to state 20
+
+
+State 10
+
+   15 function_declaration_list: function_declaration .
+
+    $default  reduce using rule 15 (function_declaration_list)
+
+
+State 11
+
+   17 function_declaration: FUNC Identifier . '(' parameter_declaration_list ')' function_body END_DOT
+
+    '('  shift, and go to state 21
+
+
+State 12
+
+   53 assignment: Identifier . '=' expression
+   54           | Identifier . '[' dim_num_stm ']' '=' expression
+
+    '='  shift, and go to state 22
+    '['  shift, and go to state 23
+
+
+State 13
+
+    4 assignment_list: assignment_list . assignment
+   12 DEFINES_head: DEFINES assignment_list . END_DOT
+
+    END_DOT     shift, and go to state 24
+    Identifier  shift, and go to state 12
+
+    assignment  go to state 25
+
+
+State 14
+
+    3 assignment_list: assignment .
+
+    $default  reduce using rule 3 (assignment_list)
+
+
+State 15
+
+    0 $accept: program "end of file" .
+
+    $default  accept
+
+
+State 16
+
+    9 DEFINES_list: DEFINES_list TRANS_STR_stm .
+
+    $default  reduce using rule 9 (DEFINES_list)
+
+
+State 17
+
+   10 DEFINES_list: DEFINES_list DEFINES_head .
+
+    $default  reduce using rule 10 (DEFINES_list)
+
+
+State 18
+
+    2 program: DEFINES_list body .
+
+    $default  reduce using rule 2 (program)
+
+
+State 19
+
+    1 program: body DEFINES_list .
+    9 DEFINES_list: DEFINES_list . TRANS_STR_stm
+   10             | DEFINES_list . DEFINES_head
+
+    DEFINES    shift, and go to state 2
+    TRANS_STR  shift, and go to state 3
+
+    "end of file"  reduce using rule 1 (program)
+    "end of file"  [reduce using rule 5 (TRANS_STR_stm)]
+    "end of file"  [reduce using rule 11 (DEFINES_head)]
+    DEFINES        [reduce using rule 5 (TRANS_STR_stm)]
+    DEFINES        [reduce using rule 11 (DEFINES_head)]
+    TRANS_STR      [reduce using rule 5 (TRANS_STR_stm)]
+    TRANS_STR      [reduce using rule 11 (DEFINES_head)]
+    $default       reduce using rule 1 (program)
+
+    TRANS_STR_stm  go to state 16
+    DEFINES_head   go to state 17
+
+
+State 20
+
+   16 function_declaration_list: function_declaration_list function_declaration .
+
+    $default  reduce using rule 16 (function_declaration_list)
+
+
+State 21
+
+   17 function_declaration: FUNC Identifier '(' . parameter_declaration_list ')' function_body END_DOT
+
+    Identifier  shift, and go to state 26
+
+    $default  reduce using rule 20 (parameter_declaration_list)
+
+    parameter_declaration_list  go to state 27
+    parameter_declaration       go to state 28
+
+
+State 22
+
+   53 assignment: Identifier '=' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 37
+
+
+State 23
+
+   54 assignment: Identifier '[' . dim_num_stm ']' '=' expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    dim_num_stm    go to state 38
+    expression     go to state 39
+
+
+State 24
+
+   12 DEFINES_head: DEFINES assignment_list END_DOT .
+
+    $default  reduce using rule 12 (DEFINES_head)
+
+
+State 25
+
+    4 assignment_list: assignment_list assignment .
+
+    $default  reduce using rule 4 (assignment_list)
+
+
+State 26
+
+   21 parameter_declaration: Identifier .
+   22                      | Identifier . '=' expression
+
+    '='  shift, and go to state 40
+
+    $default  reduce using rule 21 (parameter_declaration)
+
+
+State 27
+
+   17 function_declaration: FUNC Identifier '(' parameter_declaration_list . ')' function_body END_DOT
+   19 parameter_declaration_list: parameter_declaration_list . ',' parameter_declaration
+
+    ')'  shift, and go to state 41
+    ','  shift, and go to state 42
+
+
+State 28
+
+   18 parameter_declaration_list: parameter_declaration .
+
+    $default  reduce using rule 18 (parameter_declaration_list)
+
+
+State 29
+
+   65 expression: '-' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 43
+
+
+State 30
+
+   48 function_call: CALL . Identifier '(' expression_list ')'
+   49              | CALL . Identifier
+
+    Identifier  shift, and go to state 44
+
+
+State 31
+
+   62 expression: FNULL .
+
+    $default  reduce using rule 62 (expression)
+
+
+State 32
+
+   63 expression: Number .
+
+    $default  reduce using rule 63 (expression)
+
+
+State 33
+
+   60 expression: Identifier .
+
+    $default  reduce using rule 60 (expression)
+
+
+State 34
+
+   61 expression: String .
+
+    $default  reduce using rule 61 (expression)
+
+
+State 35
+
+   76 expression: '(' . expression ')'
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 45
+
+
+State 36
+
+   64 expression: function_call .
+
+    $default  reduce using rule 64 (expression)
+
+
+State 37
+
+   53 assignment: Identifier '=' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 53 (assignment)
+
+
+State 38
+
+   54 assignment: Identifier '[' dim_num_stm . ']' '=' expression
+   56 dim_num_stm: dim_num_stm . ',' expression
+
+    ','  shift, and go to state 56
+    ']'  shift, and go to state 57
+
+
+State 39
+
+   55 dim_num_stm: expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 55 (dim_num_stm)
+
+
+State 40
+
+   22 parameter_declaration: Identifier '=' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 58
+
+
+State 41
+
+   17 function_declaration: FUNC Identifier '(' parameter_declaration_list ')' . function_body END_DOT
+
+    IF          shift, and go to state 59
+    While       shift, and go to state 60
+    PRINT       shift, and go to state 61
+    RETURN      shift, and go to state 62
+    STOP        shift, and go to state 63
+    HOME        shift, and go to state 64
+    BASE        shift, and go to state 65
+    TOOL        shift, and go to state 66
+    TYPE        shift, and go to state 67
+    TWAIT       shift, and go to state 68
+    SIGNAL      shift, and go to state 69
+    GOTO        shift, and go to state 70
+    SIG         shift, and go to state 71
+    JMOVE       shift, and go to state 72
+    SWAIT       shift, and go to state 73
+    CALL        shift, and go to state 30
+    Identifier  shift, and go to state 74
+
+    parameter_declaration  go to state 75
+    function_body          go to state 76
+    statement_list         go to state 77
+    statement              go to state 78
+    return                 go to state 79
+    while_loop             go to state 80
+    function_call          go to state 81
+    if                     go to state 82
+    print                  go to state 83
+    assignment             go to state 84
+
+
+State 42
+
+   19 parameter_declaration_list: parameter_declaration_list ',' . parameter_declaration
+
+    Identifier  shift, and go to state 26
+
+    parameter_declaration  go to state 85
+
+
+State 43
+
+   65 expression: '-' expression .
+   66           | expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    $default  reduce using rule 65 (expression)
+
+
+State 44
+
+   48 function_call: CALL Identifier . '(' expression_list ')'
+   49              | CALL Identifier .
+
+    '('  shift, and go to state 86
+
+    $default  reduce using rule 49 (function_call)
+
+
+State 45
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+   76           | '(' expression . ')'
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+    ')'  shift, and go to state 87
+
+
+State 46
+
+   72 expression: expression GE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 88
+
+
+State 47
+
+   73 expression: expression LE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 89
+
+
+State 48
+
+   75 expression: expression EQ . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 90
+
+
+State 49
+
+   74 expression: expression NE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 91
+
+
+State 50
+
+   71 expression: expression '>' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 92
+
+
+State 51
+
+   70 expression: expression '<' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 93
+
+
+State 52
+
+   67 expression: expression '-' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 94
+
+
+State 53
+
+   66 expression: expression '+' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 95
+
+
+State 54
+
+   68 expression: expression '*' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 96
+
+
+State 55
+
+   69 expression: expression '/' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 97
+
+
+State 56
+
+   56 dim_num_stm: dim_num_stm ',' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 98
+
+
+State 57
+
+   54 assignment: Identifier '[' dim_num_stm ']' . '=' expression
+
+    '='  shift, and go to state 99
+
+
+State 58
+
+   22 parameter_declaration: Identifier '=' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 22 (parameter_declaration)
+
+
+State 59
+
+   50 if: IF . expression function_body END_ST
+   51   | IF . expression function_body ELSE function_body END_ST
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 100
+
+
+State 60
+
+   47 while_loop: While . '(' expression ')' function_body
+
+    '('  shift, and go to state 101
+
+
+State 61
+
+   52 print: PRINT . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 102
+
+
+State 62
+
+   46 return: RETURN .
+
+    $default  reduce using rule 46 (return)
+
+
+State 63
+
+   33 statement: STOP .
+
+    $default  reduce using rule 33 (statement)
+
+
+State 64
+
+   38 statement: HOME . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 103
+
+
+State 65
+
+   34 statement: BASE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 104
+
+
+State 66
+
+   35 statement: TOOL . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 105
+
+
+State 67
+
+   42 statement: TYPE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 106
+
+
+State 68
+
+   36 statement: TWAIT . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 107
+
+
+State 69
+
+   39 statement: SIGNAL . signal_num_stm
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    signal_num_stm  go to state 108
+    function_call   go to state 36
+    expression      go to state 109
+
+
+State 70
+
+   43 statement: GOTO . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 110
+
+
+State 71
+
+   40 statement: SIG . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 111
+
+
+State 72
+
+   37 statement: JMOVE . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 112
+
+
+State 73
+
+   41 statement: SWAIT . signal_num_stm
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    signal_num_stm  go to state 113
+    function_call   go to state 36
+    expression      go to state 109
+
+
+State 74
+
+   21 parameter_declaration: Identifier .
+   22                      | Identifier . '=' expression
+   53 assignment: Identifier . '=' expression
+   54           | Identifier . '[' dim_num_stm ']' '=' expression
+
+    '='  shift, and go to state 114
+    '['  shift, and go to state 23
+
+    $default  reduce using rule 21 (parameter_declaration)
+
+
+State 75
+
+   26 statement: parameter_declaration .
+
+    $default  reduce using rule 26 (statement)
+
+
+State 76
+
+   17 function_declaration: FUNC Identifier '(' parameter_declaration_list ')' function_body . END_DOT
+
+    END_DOT  shift, and go to state 115
+
+
+State 77
+
+   23 function_body: statement_list .
+   25 statement_list: statement_list . statement
+
+    IF          shift, and go to state 59
+    While       shift, and go to state 60
+    PRINT       shift, and go to state 61
+    RETURN      shift, and go to state 62
+    STOP        shift, and go to state 63
+    HOME        shift, and go to state 64
+    BASE        shift, and go to state 65
+    TOOL        shift, and go to state 66
+    TYPE        shift, and go to state 67
+    TWAIT       shift, and go to state 68
+    SIGNAL      shift, and go to state 69
+    GOTO        shift, and go to state 70
+    SIG         shift, and go to state 71
+    JMOVE       shift, and go to state 72
+    SWAIT       shift, and go to state 73
+    CALL        shift, and go to state 30
+    Identifier  shift, and go to state 74
+
+    IF          [reduce using rule 23 (function_body)]
+    While       [reduce using rule 23 (function_body)]
+    PRINT       [reduce using rule 23 (function_body)]
+    RETURN      [reduce using rule 23 (function_body)]
+    STOP        [reduce using rule 23 (function_body)]
+    HOME        [reduce using rule 23 (function_body)]
+    BASE        [reduce using rule 23 (function_body)]
+    TOOL        [reduce using rule 23 (function_body)]
+    TYPE        [reduce using rule 23 (function_body)]
+    TWAIT       [reduce using rule 23 (function_body)]
+    SIGNAL      [reduce using rule 23 (function_body)]
+    GOTO        [reduce using rule 23 (function_body)]
+    SIG         [reduce using rule 23 (function_body)]
+    JMOVE       [reduce using rule 23 (function_body)]
+    SWAIT       [reduce using rule 23 (function_body)]
+    CALL        [reduce using rule 23 (function_body)]
+    Identifier  [reduce using rule 23 (function_body)]
+    $default    reduce using rule 23 (function_body)
+
+    parameter_declaration  go to state 75
+    statement              go to state 116
+    return                 go to state 79
+    while_loop             go to state 80
+    function_call          go to state 81
+    if                     go to state 82
+    print                  go to state 83
+    assignment             go to state 84
+
+
+State 78
+
+   24 statement_list: statement .
+
+    $default  reduce using rule 24 (statement_list)
+
+
+State 79
+
+   32 statement: return .
+
+    $default  reduce using rule 32 (statement)
+
+
+State 80
+
+   30 statement: while_loop .
+
+    $default  reduce using rule 30 (statement)
+
+
+State 81
+
+   29 statement: function_call .
+
+    $default  reduce using rule 29 (statement)
+
+
+State 82
+
+   31 statement: if .
+
+    $default  reduce using rule 31 (statement)
+
+
+State 83
+
+   28 statement: print .
+
+    $default  reduce using rule 28 (statement)
+
+
+State 84
+
+   27 statement: assignment .
+
+    $default  reduce using rule 27 (statement)
+
+
+State 85
+
+   19 parameter_declaration_list: parameter_declaration_list ',' parameter_declaration .
+
+    $default  reduce using rule 19 (parameter_declaration_list)
+
+
+State 86
+
+   48 function_call: CALL Identifier '(' . expression_list ')'
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    $default  reduce using rule 59 (expression_list)
+
+    function_call    go to state 36
+    expression_list  go to state 117
+    expression       go to state 118
+
+
+State 87
+
+   76 expression: '(' expression ')' .
+
+    $default  reduce using rule 76 (expression)
+
+
+State 88
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   72           | expression GE expression .
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 72 (expression)
+
+
+State 89
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   73           | expression LE expression .
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 73 (expression)
+
+
+State 90
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+   75           | expression EQ expression .
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 75 (expression)
+
+
+State 91
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   74           | expression NE expression .
+   75           | expression . EQ expression
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 74 (expression)
+
+
+State 92
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   71           | expression '>' expression .
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 71 (expression)
+
+
+State 93
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   70           | expression '<' expression .
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 70 (expression)
+
+
+State 94
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   67           | expression '-' expression .
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 67 (expression)
+
+
+State 95
+
+   66 expression: expression . '+' expression
+   66           | expression '+' expression .
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 66 (expression)
+
+
+State 96
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   68           | expression '*' expression .
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    $default  reduce using rule 68 (expression)
+
+
+State 97
+
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   69           | expression '/' expression .
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    $default  reduce using rule 69 (expression)
+
+
+State 98
+
+   56 dim_num_stm: dim_num_stm ',' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 56 (dim_num_stm)
+
+
+State 99
+
+   54 assignment: Identifier '[' dim_num_stm ']' '=' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 119
+
+
+State 100
+
+   50 if: IF expression . function_body END_ST
+   51   | IF expression . function_body ELSE function_body END_ST
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE          shift, and go to state 46
+    LE          shift, and go to state 47
+    EQ          shift, and go to state 48
+    NE          shift, and go to state 49
+    '>'         shift, and go to state 50
+    '<'         shift, and go to state 51
+    '-'         shift, and go to state 52
+    '+'         shift, and go to state 53
+    '*'         shift, and go to state 54
+    '/'         shift, and go to state 55
+    IF          shift, and go to state 59
+    While       shift, and go to state 60
+    PRINT       shift, and go to state 61
+    RETURN      shift, and go to state 62
+    STOP        shift, and go to state 63
+    HOME        shift, and go to state 64
+    BASE        shift, and go to state 65
+    TOOL        shift, and go to state 66
+    TYPE        shift, and go to state 67
+    TWAIT       shift, and go to state 68
+    SIGNAL      shift, and go to state 69
+    GOTO        shift, and go to state 70
+    SIG         shift, and go to state 71
+    JMOVE       shift, and go to state 72
+    SWAIT       shift, and go to state 73
+    CALL        shift, and go to state 30
+    Identifier  shift, and go to state 74
+
+    parameter_declaration  go to state 75
+    function_body          go to state 120
+    statement_list         go to state 77
+    statement              go to state 78
+    return                 go to state 79
+    while_loop             go to state 80
+    function_call          go to state 81
+    if                     go to state 82
+    print                  go to state 83
+    assignment             go to state 84
+
+
+State 101
+
+   47 while_loop: While '(' . expression ')' function_body
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 121
+
+
+State 102
+
+   52 print: PRINT expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 52 (print)
+
+
+State 103
+
+   38 statement: HOME expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 38 (statement)
+
+
+State 104
+
+   34 statement: BASE expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 34 (statement)
+
+
+State 105
+
+   35 statement: TOOL expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 35 (statement)
+
+
+State 106
+
+   42 statement: TYPE expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 42 (statement)
+
+
+State 107
+
+   36 statement: TWAIT expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 36 (statement)
+
+
+State 108
+
+   39 statement: SIGNAL signal_num_stm .
+   45 signal_num_stm: signal_num_stm . ',' expression
+
+    ','  shift, and go to state 122
+
+    $default  reduce using rule 39 (statement)
+
+
+State 109
+
+   44 signal_num_stm: expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 44 (signal_num_stm)
+
+
+State 110
+
+   43 statement: GOTO expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 43 (statement)
+
+
+State 111
+
+   40 statement: SIG expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 40 (statement)
+
+
+State 112
+
+   37 statement: JMOVE expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 37 (statement)
+
+
+State 113
+
+   41 statement: SWAIT signal_num_stm .
+   45 signal_num_stm: signal_num_stm . ',' expression
+
+    ','  shift, and go to state 122
+
+    $default  reduce using rule 41 (statement)
+
+
+State 114
+
+   22 parameter_declaration: Identifier '=' . expression
+   53 assignment: Identifier '=' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 123
+
+
+State 115
+
+   17 function_declaration: FUNC Identifier '(' parameter_declaration_list ')' function_body END_DOT .
+
+    $default  reduce using rule 17 (function_declaration)
+
+
+State 116
+
+   25 statement_list: statement_list statement .
+
+    $default  reduce using rule 25 (statement_list)
+
+
+State 117
+
+   48 function_call: CALL Identifier '(' expression_list . ')'
+   58 expression_list: expression_list . ',' expression
+
+    ')'  shift, and go to state 124
+    ','  shift, and go to state 125
+
+
+State 118
+
+   57 expression_list: expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 57 (expression_list)
+
+
+State 119
+
+   54 assignment: Identifier '[' dim_num_stm ']' '=' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 54 (assignment)
+
+
+State 120
+
+   50 if: IF expression function_body . END_ST
+   51   | IF expression function_body . ELSE function_body END_ST
+
+    ELSE    shift, and go to state 126
+    END_ST  shift, and go to state 127
+
+
+State 121
+
+   47 while_loop: While '(' expression . ')' function_body
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+    ')'  shift, and go to state 128
+
+
+State 122
+
+   45 signal_num_stm: signal_num_stm ',' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 129
+
+
+State 123
+
+   22 parameter_declaration: Identifier '=' expression .
+   53 assignment: Identifier '=' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    ELSE        reduce using rule 22 (parameter_declaration)
+    ELSE        [reduce using rule 53 (assignment)]
+    IF          reduce using rule 22 (parameter_declaration)
+    IF          [reduce using rule 53 (assignment)]
+    While       reduce using rule 22 (parameter_declaration)
+    While       [reduce using rule 53 (assignment)]
+    PRINT       reduce using rule 22 (parameter_declaration)
+    PRINT       [reduce using rule 53 (assignment)]
+    RETURN      reduce using rule 22 (parameter_declaration)
+    RETURN      [reduce using rule 53 (assignment)]
+    STOP        reduce using rule 22 (parameter_declaration)
+    STOP        [reduce using rule 53 (assignment)]
+    HOME        reduce using rule 22 (parameter_declaration)
+    HOME        [reduce using rule 53 (assignment)]
+    BASE        reduce using rule 22 (parameter_declaration)
+    BASE        [reduce using rule 53 (assignment)]
+    TOOL        reduce using rule 22 (parameter_declaration)
+    TOOL        [reduce using rule 53 (assignment)]
+    TYPE        reduce using rule 22 (parameter_declaration)
+    TYPE        [reduce using rule 53 (assignment)]
+    TWAIT       reduce using rule 22 (parameter_declaration)
+    TWAIT       [reduce using rule 53 (assignment)]
+    SIGNAL      reduce using rule 22 (parameter_declaration)
+    SIGNAL      [reduce using rule 53 (assignment)]
+    GOTO        reduce using rule 22 (parameter_declaration)
+    GOTO        [reduce using rule 53 (assignment)]
+    SIG         reduce using rule 22 (parameter_declaration)
+    SIG         [reduce using rule 53 (assignment)]
+    JMOVE       reduce using rule 22 (parameter_declaration)
+    JMOVE       [reduce using rule 53 (assignment)]
+    SWAIT       reduce using rule 22 (parameter_declaration)
+    SWAIT       [reduce using rule 53 (assignment)]
+    END_ST      reduce using rule 22 (parameter_declaration)
+    END_ST      [reduce using rule 53 (assignment)]
+    END_DOT     reduce using rule 22 (parameter_declaration)
+    END_DOT     [reduce using rule 53 (assignment)]
+    CALL        reduce using rule 22 (parameter_declaration)
+    CALL        [reduce using rule 53 (assignment)]
+    Identifier  reduce using rule 22 (parameter_declaration)
+    Identifier  [reduce using rule 53 (assignment)]
+    $default    reduce using rule 22 (parameter_declaration)
+
+
+State 124
+
+   48 function_call: CALL Identifier '(' expression_list ')' .
+
+    $default  reduce using rule 48 (function_call)
+
+
+State 125
+
+   58 expression_list: expression_list ',' . expression
+
+    '-'         shift, and go to state 29
+    CALL        shift, and go to state 30
+    FNULL       shift, and go to state 31
+    Number      shift, and go to state 32
+    Identifier  shift, and go to state 33
+    String      shift, and go to state 34
+    '('         shift, and go to state 35
+
+    function_call  go to state 36
+    expression     go to state 130
+
+
+State 126
+
+   51 if: IF expression function_body ELSE . function_body END_ST
+
+    IF          shift, and go to state 59
+    While       shift, and go to state 60
+    PRINT       shift, and go to state 61
+    RETURN      shift, and go to state 62
+    STOP        shift, and go to state 63
+    HOME        shift, and go to state 64
+    BASE        shift, and go to state 65
+    TOOL        shift, and go to state 66
+    TYPE        shift, and go to state 67
+    TWAIT       shift, and go to state 68
+    SIGNAL      shift, and go to state 69
+    GOTO        shift, and go to state 70
+    SIG         shift, and go to state 71
+    JMOVE       shift, and go to state 72
+    SWAIT       shift, and go to state 73
+    CALL        shift, and go to state 30
+    Identifier  shift, and go to state 74
+
+    parameter_declaration  go to state 75
+    function_body          go to state 131
+    statement_list         go to state 77
+    statement              go to state 78
+    return                 go to state 79
+    while_loop             go to state 80
+    function_call          go to state 81
+    if                     go to state 82
+    print                  go to state 83
+    assignment             go to state 84
+
+
+State 127
+
+   50 if: IF expression function_body END_ST .
+
+    $default  reduce using rule 50 (if)
+
+
+State 128
+
+   47 while_loop: While '(' expression ')' . function_body
+
+    IF          shift, and go to state 59
+    While       shift, and go to state 60
+    PRINT       shift, and go to state 61
+    RETURN      shift, and go to state 62
+    STOP        shift, and go to state 63
+    HOME        shift, and go to state 64
+    BASE        shift, and go to state 65
+    TOOL        shift, and go to state 66
+    TYPE        shift, and go to state 67
+    TWAIT       shift, and go to state 68
+    SIGNAL      shift, and go to state 69
+    GOTO        shift, and go to state 70
+    SIG         shift, and go to state 71
+    JMOVE       shift, and go to state 72
+    SWAIT       shift, and go to state 73
+    CALL        shift, and go to state 30
+    Identifier  shift, and go to state 74
+
+    parameter_declaration  go to state 75
+    function_body          go to state 132
+    statement_list         go to state 77
+    statement              go to state 78
+    return                 go to state 79
+    while_loop             go to state 80
+    function_call          go to state 81
+    if                     go to state 82
+    print                  go to state 83
+    assignment             go to state 84
+
+
+State 129
+
+   45 signal_num_stm: signal_num_stm ',' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 45 (signal_num_stm)
+
+
+State 130
+
+   58 expression_list: expression_list ',' expression .
+   66 expression: expression . '+' expression
+   67           | expression . '-' expression
+   68           | expression . '*' expression
+   69           | expression . '/' expression
+   70           | expression . '<' expression
+   71           | expression . '>' expression
+   72           | expression . GE expression
+   73           | expression . LE expression
+   74           | expression . NE expression
+   75           | expression . EQ expression
+
+    GE   shift, and go to state 46
+    LE   shift, and go to state 47
+    EQ   shift, and go to state 48
+    NE   shift, and go to state 49
+    '>'  shift, and go to state 50
+    '<'  shift, and go to state 51
+    '-'  shift, and go to state 52
+    '+'  shift, and go to state 53
+    '*'  shift, and go to state 54
+    '/'  shift, and go to state 55
+
+    $default  reduce using rule 58 (expression_list)
+
+
+State 131
+
+   51 if: IF expression function_body ELSE function_body . END_ST
+
+    END_ST  shift, and go to state 133
+
+
+State 132
+
+   47 while_loop: While '(' expression ')' function_body .
+
+    $default  reduce using rule 47 (while_loop)
+
+
+State 133
+
+   51 if: IF expression function_body ELSE function_body END_ST .
+
+    $default  reduce using rule 51 (if)

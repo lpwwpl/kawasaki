@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="grammar">
+      <UniqueIdentifier>{3aadd174-a0ea-4b78-8a33-4032bb770a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CLE">
+      <UniqueIdentifier>{1a372f07-7276-45e9-ab12-cf3c541606b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui">
+      <UniqueIdentifier>{bbed1165-def7-4d40-ba17-949ef936c859}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gui\Qsci">
+      <UniqueIdentifier>{4269a42b-1ad2-4594-8155-db7a9c8bfcfd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="grammar\parser.tab.hpp">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\stack.hh">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\assignmentnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\ast.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\astnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\functioncallnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\functionnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\identifiernode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\ifnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\listnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\numberliteralnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\operatornode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\parameternode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\printnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\returnnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\statementlistnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\stopnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\stringliteralnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\whilenode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\activationrecord.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\symboltable.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\variablerecord.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\errors.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\base.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\goto.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\homenode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\jmove.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\sig.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\signal.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\swait.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tool.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\twait.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\type.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\translator.hpp">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\FlexLexer.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\signal_nums_node.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\dimnumnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\trans_str.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\switch.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\casenode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\switch_case_list.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\accessnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\lmove.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\align.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\accuracy.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\c1move.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\decompose.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\here.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\jappro.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\point.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\speed.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\lappro.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\break.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\fornode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\do_until.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\labelnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Exceptions.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\FileLua.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\FwdDecl.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IConsole.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IFile.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IFileObserver.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ILockable.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IMainFrame.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IObserveable.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IProject.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\IScriptEngine.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ISettingsProvider.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ISyncContext.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\LanguageTokens.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Locker.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\ProjectLua.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Prototypes.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\QConsoleStreamBuffer.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\QFileExplorerTabBar.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\QGraphicsItemPointList.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Settings.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\TryCatch.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Types.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\Utils.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\IAction.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\settings_.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="gui\minimap.h">
+      <Filter>gui</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\paramnode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\draw.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\drive.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tdraw.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\pointoat.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\pointx.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\pointz.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\decode.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tcpclose.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tcprecv.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tcpsend.h">
+      <Filter>grammar</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\bits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\buildin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\pause.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tcpconnect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\tcpstatus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\ldepart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\weight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\val.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\pulse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\trans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\distance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grammar\nullnode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\parser.tab.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\assignmentnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\astnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\functioncallnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\functionnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\identifiernode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\ifnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\lexer.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\numberliteralnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\operatornode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\parameternode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\printnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\returnnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\statementlistnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\stopnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\stringliteralnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\whilenode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\activationrecord.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\symboltable.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\base.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\goto.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\homenode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\jmove.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\sig.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\signal.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\swait.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tool.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\twait.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\type.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\translator.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\signal_nums_node.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\dimnumnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\trans_str.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\switch.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\casenode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\switch_case_list.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\accessnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\lmove.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\align.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\accuracy.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\c1move.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\decompose.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\here.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\jappro.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\point.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\speed.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\lappro.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\break.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\fornode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\do_until.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\labelnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\DlgAbout.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\DlgNewFile.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\DlgSettings.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Exceptions.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FileExplorerTabWidget.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FileLua.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmConsole.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmFileExplorer.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmInfo.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmProjectExplorer.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmSourceEdit.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\IFile.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\IFileObserver.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\IProject.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ISettingsProvider.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Locker.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\ProjectLua.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Prototypes.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QCommandPrompt.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QConsoleStreamBuffer.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QFileExplorerTabBar.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QGradientPanel.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QGraphicsItemPointList.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\QSelection.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Settings.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\Utils.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\WndMain.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\AsWorker.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\IAction.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\FrmFindReplace.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\searchandreplace.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\settings_.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui\minimap.cpp">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\paramnode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\draw.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\drive.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tdraw.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\pointoat.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\pointx.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\pointz.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\decode.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tcpclose.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tcprecv.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tcpsend.cpp">
+      <Filter>grammar</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\bits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\buildin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\pause.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tcpconnect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\tcpstatus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\ldepart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\weight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\val.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\pulse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\trans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\distance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grammar\nullnode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="grammar\lexer.l">
+      <Filter>grammar</Filter>
+    </CustomBuild>
+    <CustomBuild Include="grammar\parser.y">
+      <Filter>grammar</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="grammar\parser.output">
+      <Filter>grammar</Filter>
+    </None>
+    <None Include="gui\InstantLuaX.tdl">
+      <Filter>gui</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\c8x102.pg">
+      <Filter>grammar</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\..\..\code.txt">
+      <Filter>grammar</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="gui\DlgAbout.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\DlgNewFile.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\DlgSettings.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FileExplorerTabWidget.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmConsole.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmFileExplorer.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmInfo.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmProjectExplorer.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmSourceEdit.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\QCommandPrompt.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\QGradientPanel.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\QSelection.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\WndMain.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\AsWorker.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\FrmFindReplace.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+    <QtMoc Include="gui\searchandreplace.h">
+      <Filter>gui</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="gui\DlgAbout.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\DlgNewFile.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\DlgSettings.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\form.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\FrmConsole.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\FrmFileExplorer.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\FrmInfo.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\FrmProjectExplorer.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\QGradientPanel.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\QSelection.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\WndMain.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\FrmFindReplace.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\searchandreplace.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+    <QtUic Include="gui\minimap.ui">
+      <Filter>gui</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gui\InstantLua_resource.rc">
+      <Filter>gui</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="qrc\luanda.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+</Project>

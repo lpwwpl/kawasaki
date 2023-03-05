@@ -1,0 +1,48 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="ico_exit">res/application-exit-4.ico</file>
+        <file alias="ico_add_prj">res/archive-insert-directory-2.ico</file>
+        <file alias="ico_settings">res/configure-5.ico</file>
+        <file alias="ico_add_file">res/document-new-6.ico</file>
+        <file alias="ico_open_prj">res/document-open-7.ico</file>
+        <file alias="ico_info">res/document-properties.ico</file>
+        <file alias="ico_save_all">res/document-save-3.ico</file>
+        <file alias="ico_save_as">res/document-save-as-3.ico</file>
+        <file>res/tab-close-3.ico</file>
+        <file>res/tab-close-other.ico</file>
+        <file>res/konsole.png</file>
+        <file>res/ok.ico</file>
+        <file>res/warning.ico</file>
+        <file>res/text-x-preview.ico</file>
+        <file>res/tab-duplicate-3.png</file>
+        <file>res/splash.png</file>
+        <file>res/Open.png</file>
+        <file>res/setting.png</file>
+    </qresource>
+    <qresource prefix="/run_and_debug">
+        <file>res/debug-step-into.ico</file>
+        <file>res/debug-step-out.ico</file>
+        <file>res/debug-step-over.ico</file>
+        <file>res/arrow-right-3.ico</file>
+        <file>res/clicknrun.ico</file>
+        <file>res/code-class.ico</file>
+        <file>res/code-function.ico</file>
+        <file>res/run-build-2.ico</file>
+        <file>res/run-build-file-2.ico</file>
+        <file>res/go-next-context.ico</file>
+        <file>res/stop.png</file>
+        <file>res/process-stop.ico</file>
+        <file>res/run.png</file>
+        <file>res/debug-step-into.png</file>
+        <file>res/debug-step-out.png</file>
+        <file>res/debug-step-over.png</file>
+    </qresource>
+    <qresource prefix="/outline">
+        <file>res/code-class.ico</file>
+        <file>res/code-function.ico</file>
+        <file>res/code-variable.ico</file>
+        <file>res/text-x-preview.ico</file>
+        <file>res/code-function.png</file>
+        <file>res/code-variable.png</file>
+    </qresource>
+</RCC>

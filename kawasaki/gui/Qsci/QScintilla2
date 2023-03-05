@@ -1,0 +1,9 @@
+#ifndef QT_STATIC
+#  if defined(QT_BUILD_QSCINTILLA2_LIB)
+#    define QSCINTILLA_MAKE_DLL 1
+#  else
+#    define QSCINTILLA_DLL      1
+#  endif
+#endif
+
+#include "qsciscintilla.h"
